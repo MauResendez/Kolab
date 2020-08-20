@@ -1,12 +1,13 @@
-const express = require('express');
-// const { Router } = require('express');
-const router = express.Router();
 const auth = require('../../middleware/auth');
-const User = require('../../models/User');
 const bcrypt = require('bcryptjs');
 const { check, validationResult } = require('express-validator/check');
-const jwt = require('jsonwebtoken');
 const config = require('config');
+const express = require('express');
+const jwt = require('jsonwebtoken');
+const router = express.Router();
+
+const User = require('../../models/User');
+
 
 // Get api/auth
 // Authorizes users
@@ -26,7 +27,7 @@ router.get('/', auth, async (req, res) => {
 });
 
 // Post api/auth
-// Gets token to be able to go to private routes
+// Gets token to be able to go to private routes (Logging in)
 // Will be public
 router.post('/', [
     check('email', 'Please include a valid email').isEmail(), // Checks for specific error. First param is what variable you're checking, second is error message
@@ -48,14 +49,14 @@ router.post('/', [
 
         if(!user)
         {
-            return res.status(400).json({ errors: [{msg: 'Invalid credentials' }]});
+            return res.status(400).json({ errors: [{ msg: 'Invalid credentials' }]});
         }
 
         const isMatch = await bcrypt.compare(password, user.password);
 
         if(!isMatch)
         {
-            return res.status(400).json({ errors: [{msg: 'Invalid credentials' }]});
+            return res.status(400).json({ errors: [{ msg: 'Invalid credentials' }]});
         }
 
         const payload = {

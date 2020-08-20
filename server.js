@@ -8,7 +8,6 @@ const app = express();
 
 // Init Middleware
 app.use(express.json({ extended: false })); // Lets you get data from req.body
-
 app.get('/', (req, res) =>
 {
     res.send("API Running");

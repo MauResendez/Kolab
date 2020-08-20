@@ -1,11 +1,10 @@
-const express = require('express');
-// const { Router } = require('express');
-const router = express.Router();
-const gravatar = require('gravatar');
 const bcrypt = require('bcryptjs');
 const { check, validationResult } = require('express-validator/check');
-const jwt = require('jsonwebtoken');
 const config = require('config');
+const express = require('express');
+const gravatar = require('gravatar');
+const jwt = require('jsonwebtoken');
+const router = express.Router();
 
 const User = require('../../models/User');
 
@@ -18,8 +17,9 @@ router.post('/', [
     check('email', 'Please include a valid email').isEmail(), // Checks for specific error. First param is what variable you're checking, second is error message
     check('password', 'Please enter a password with 8 or more characters').isLength({ min: 8 }), // Checks for specific error. First param is what variable you're checking, second is error message 
 ], async (req, res) => {
-    // console.log(req.body);
+
     const errors = validationResult(req);
+
     if(!errors.isEmpty())
     {
         return res.status(400).json({ errors: errors.array() });

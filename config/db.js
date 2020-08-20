@@ -1,20 +1,20 @@
 const { connect } = require("mongoose");
 
-const mongoose = require('mongoose');
 const config = require('config');
 const db = config.get("mongoURI");
+const mongoose = require('mongoose');
 
 mongoose.connect(db);
 
 const connectDB = async () => {
     try
     {
-        await mongoose.connect(db, 
-        {
-            useNewUrlParser: true,
-            useUnifiedTopology: true,
-            useCreateIndex: true
-        });
+        mongoose.set('useNewUrlParser', true);
+        mongoose.set('useFindAndModify', false);
+        mongoose.set('useCreateIndex', true);
+        mongoose.set('useUnifiedTopology', true);
+
+        await mongoose.connect(db);
 
         console.log("Connected")
     }
