@@ -215,7 +215,7 @@ router.get('/user/:user_id', async (req, res) =>
     }
 });
 
-// Get api/profile/
+// Delete api/profile/
 // Delete profile, user, & posts
 // Will be private
 

@@ -1,113 +1,145 @@
 const mongoose = require('mongoose');
 
 const ProfileSchema = new mongoose.Schema({
-    user: {
+    user: 
+    {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'user'
     },
-    company: {
+    company: 
+    {
         type: String
     },
-    website: {
+    website: 
+    {
         type: String
     },
-    city: {
+    city: 
+    {
         type: String
     },
-    state: {
+    state: 
+    {
         type: String
     },
-    status: {
+    status: 
+    {
         type: String,
         required: true
     },
-    skills: {
+    skills: 
+    {
         type: [String],
         required: true
     },
-    bio: {
+    bio: 
+    {
         type: String
     },
-    experience: [
+    experience: 
+    [
         {
-            title: {
+            title: 
+            {
                 type: String,
                 required: true
             },
-            company: {
+            company: 
+            {
                 type: String,
                 required: true
             },
-            city: {
+            city: 
+            {
                 type: String
             },
-            state: {
+            state: 
+            {
                 type: String
             },
-            from: {
+            from: 
+            {
                 type: Date,
                 required: true
             },
-            to: {
+            to: 
+            {
                 type: Date
             },
-            current: {
+            current: 
+            {
                 type: Boolean,
                 default: true
             },
-            description: {
+            description: 
+            {
                 type: String
             }
         }
     ],
-    education: [
+    education: 
+    [
         {
-          school: {
+          school: 
+          {
             type: String,
             required: true
           },
-          degree: {
+          degree: 
+          {
             type: String,
             required: true
           },
-          fieldofstudy: {
+          fieldofstudy: 
+          {
             type: String,
             required: true
           },
-          from: {
+          from: 
+          {
             type: Date,
             required: true
           },
-          to: {
+          to: 
+          {
             type: Date
           },
-          current: {
+          current: 
+          {
             type: Boolean,
             default: false
           },
-          description: {
+          description: 
+          {
             type: String
           }
         }
     ],
-    social: {
-        youtube: {
+    social: 
+    {
+        youtube: 
+        {
           type: String
         },
-        twitter: {
+        twitter: 
+        {
           type: String
         },
-        facebook: {
+        facebook: 
+        {
           type: String
         },
-        linkedin: {
+        linkedin: 
+        {
           type: String
         },
-        instagram: {
+        instagram: 
+        {
           type: String
         }
       },
-      date: {
+      date: 
+      {
         type: Date,
         default: Date.now
       }

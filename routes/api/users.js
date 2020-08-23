@@ -11,7 +11,8 @@ const User = require('../../models/User');
 // Post api/users
 // Registers user
 // Will be public
-router.post('/', [
+router.post('/', 
+[
     check('first_name', 'First name is required').not().isEmpty(), // Checks for specific error. First param is what variable you're checking, second is error message
     check('last_name', 'Last name is required').not().isEmpty(), // Checks for specific error. First param is what variable you're checking, second is error message
     check('email', 'Please include a valid email').isEmail(), // Checks for specific error. First param is what variable you're checking, second is error message
@@ -54,7 +55,7 @@ router.post('/', [
         // user.name = user.name.trim(); // To get rid of any unnecessary spaces on the start and end of the name
         user.first_name = user.first_name.trim(); // To get rid of any unnecessary spaces on the start and end of the first name
         user.last_name = user.last_name.trim(); // To get rid of any unnecessary spaces on the start and end of the last name
-        user.password = user.password.trim(); // To get rid of any unnecessary spaces on the start and end of the password
+        user.password = user.password;
 
         user.password = await bcrypt.hash(password, salt);
 

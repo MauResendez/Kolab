@@ -8,7 +8,6 @@ const router = express.Router();
 
 const User = require('../../models/User');
 
-
 // Get api/auth
 // Authorizes users
 // Will be public
