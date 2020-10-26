@@ -1,2 +1,1 @@
-"# Kolab" 
-"# Synergy" 
+"# Kolab"
